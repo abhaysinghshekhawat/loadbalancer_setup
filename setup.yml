@@ -1,0 +1,6 @@
+- hosts: all
+  roles:
+          - role: "mylb"
+            when: inventory_hostname in groups['lb']
+          - role: 'myapache'
+            when: inventory_hostname in groups['webserver']

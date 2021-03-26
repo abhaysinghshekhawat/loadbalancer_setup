@@ -1,0 +1,15 @@
+---
+# tasks file for mylb
+- package:
+        name: haproxy
+- template:
+        src: temp.j2
+        dest: /etc/haproxy/haproxy.cfg
+- firewalld:
+        port: "8080/tcp"
+        permanent: yes
+        state: enabled
+        immediate: yes
+- service:
+        name: haproxy
+        state: started

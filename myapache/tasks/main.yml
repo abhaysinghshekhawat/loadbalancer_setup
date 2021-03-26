@@ -1,0 +1,15 @@
+---
+# tasks file for myapache
+- package:
+        name: httpd
+- template:
+        dest: /var/www/html/index.html
+        src: temp.j2
+- firewalld:
+        port: "80/tcp"
+        permanent: yes
+        state: enabled
+        immediate: yes
+- service:
+        name: httpd
+        state: started
